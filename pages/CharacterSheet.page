@@ -1,0 +1,57 @@
+<apex:page lightningStylesheets="true" standardController="Roleplayer__c" extensions="CharacterSheetExtension">
+    <div class="my-border">
+    <apex:stylesheet value="{! URLFOR($Resource.RoleplayStyles)}"/>
+    
+    <div>
+        <!-- Look at snippets.txt for Lightning Out markup -->
+    <div class="real-life-panel">
+        <apex:includeLightning />
+
+		<!-- to be filled in by Lightning Out -->
+        <div id="fillInCharacterDetails" />
+
+        <script>
+	        $Lightning.use('c:CharacterSheetDependencyApp', whenLightningOutLoaded);
+
+            function whenLightningOutLoaded() {
+                var attributes = { // standard attributes of force:recordView
+                    recordId: '{! roleplayer__c.id }', type: 'MINI'
+                };
+                
+                $Lightning.createComponent('force:recordView', attributes,
+                    'fillInCharacterDetails', function (cmp) { /* Empty */ });
+            }
+        </script>
+    </div>        
+        <div class="avatar">
+            <apex:image width="300px" value="{! URLFOR($Resource.avatars, roleplayer__c.avatar__c)}"/>
+        </div>
+    </div>
+    
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="Bottom">
+                <apex:commandButton action="{! edit}" value="Edit" />
+                <apex:commandButton action="{! delete}" value="Delete" />
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="Character Info">
+                <apex:outputField value="{! roleplayer__c.name}" />
+                <apex:outputField value="{! roleplayer__c.race__c}" />
+                <apex:outputField value="{! roleplayer__c.class__c}" />
+                <apex:outputField value="{! roleplayer__c.level__c}" />
+                <apex:outputField value="{! roleplayer__c.experience__c}" />
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Stats" columns="1">
+                <apex:outputField value="{! roleplayer__c.strength__c}" />
+                <apex:outputField value="{! roleplayer__c.dexterity__c}" />
+                <apex:outputField value="{! roleplayer__c.constitution__c}" />
+                <apex:outputField value="{! roleplayer__c.intelligence__c}" />
+                <apex:outputField value="{! roleplayer__c.wisdom__c}" />
+                <apex:outputField value="{! roleplayer__c.charisma__c}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    </div>
+</apex:page>

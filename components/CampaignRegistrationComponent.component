@@ -1,0 +1,43 @@
+<apex:component controller="CampaignRegistrationComponentExtension" allowDML="true" layout="none">
+    
+    <apex:attribute name="campaign" type="Roleplay_Campaign__c" description="Open Campaign" assignTo="{! camp}"/>
+    
+    <apex:stylesheet value="{! URLFOR($Resource.RoleplayStyles)}"/>
+    
+    <div class="campaign-registration-component">
+        
+        <div class="campaign-details-panel">
+            <apex:form >
+                <apex:pageBlock tabStyle="campaign" >
+                    <apex:pageBlockSection >  
+                        <apex:outputField value="{! campaign.name}" />
+                        <apex:pageBlockSectionItem >
+                            <apex:outputText value="Completed Tasks" />
+                            <apex:dataList value="{! listOfNotables}" var="n">
+                                <apex:outputText value="{! n}" />
+                            </apex:dataList>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:outputField value="{! campaign.description__c}" />
+                        <apex:pageBlockSectionItem >
+                            <apex:outputText value="Registered Roleplayers" />
+                            <apex:dataList value="{! RegisteredRoleplayers}" var="r">
+                                <apex:outputText value="{! r}" />
+                            </apex:dataList>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:inputField value="{! signup.roleplayer__c}" />
+                        <apex:commandButton action="{! save}" value="Signup for this campaign" />
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+            </apex:form>
+        </div>
+        
+        <div class="registration-avatar-panel">
+            <apex:outputLink value="{! URLFOR($Action.Roleplay_Campaign__c.View, campaign.Id)}">
+                <apex:image width="200px" height="200px" value="{! URLFOR($Resource.avatars, campaign.avatar__c)}"/>
+            </apex:outputLink>
+        </div>
+    </div>
+    
+</apex:component>

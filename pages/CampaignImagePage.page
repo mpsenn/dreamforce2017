@@ -1,0 +1,7 @@
+<apex:page standardController="Roleplay_Campaign__c" readonly="true">
+        <apex:stylesheet value="{! URLFOR($Resource.RoleplayStyles)}"/>
+
+    <div class="my-border">
+    <apex:image width="200px" height="200px" value="{! URLFOR($Resource.avatars, Roleplay_campaign__c.avatar__c)}"/>
+    </div>
+</apex:page>

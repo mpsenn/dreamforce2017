@@ -1,0 +1,52 @@
+<apex:page lightningStylesheets="true" standardController="Roleplay_Campaign__c" extensions="CampaignDetailExtension" tabStyle="Lead">
+    <div class="my-border">
+        
+    <apex:sectionHeader title="Campaign quicksheet"
+                        subtitle="{! roleplay_campaign__c.name }" />
+    
+    <apex:stylesheet value="{! URLFOR($Resource.RoleplayStyles)}"/>
+    
+    <div class="related-signups-panel">
+	    <apex:relatedList list="Signups__r" pageSize="10" title="Players" />
+    </div>
+
+    <div style="display: flex; margin: 2em" >
+        
+        <div class="description-panel">
+            <h2>Campaign Description</h2>
+            <p><apex:outputText value="{! Roleplay_Campaign__c.description__c}" /></p>
+            <h2>Big Boss</h2>
+            <p><apex:outputText value="{! Roleplay_Campaign__c.boss__c}" /></p>
+            <div>
+                <apex:outputLink value="{! URLFOR($Action.Roleplay_Campaign__c.View, Roleplay_Campaign__c.Id)}">
+                    <apex:image width="150px" height="150px" value="{! URLFOR($Resource.avatars, Roleplay_Campaign__c.avatar__c)}"/>
+                </apex:outputLink>
+            </div>
+        </div>
+        
+        <apex:outputPanel styleClass="experience-panel" rendered="{! hasPlayerExperience}">
+            <h2>
+                Experience gained by each roleplayer
+            </h2>
+            <apex:chart animate="false" height="200" width="200" data="{! PlayerExperience}">
+                <apex:pieSeries labelField="name" dataField="experience" donut="40">
+                    <apex:chartLabel display="rotate" />
+                </apex:pieSeries>
+            </apex:chart>
+        </apex:outputPanel>
+        <apex:outputPanel styleClass="experience-panel" rendered="{! !hasPlayerExperience}">
+            <div>No players for this campaign!</div>
+        </apex:outputPanel>
+        
+        <div class="notable-events-panel">
+            <h2>
+                Progress made in the campaign
+            </h2>
+            <apex:dataList value="{! ListOfNotables}" var="n">
+                <apex:outputText value="{! n}" />
+            </apex:dataList>
+        </div>
+        
+    </div>
+    </div>
+</apex:page>

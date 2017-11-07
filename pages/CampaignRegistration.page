@@ -1,0 +1,12 @@
+<apex:page lightningStylesheets="true" controller="CampaignRegistrationExtension" sidebar="false">
+    <div class="my-border">
+        
+	<apex:sectionHeader title="Here's all the campaigns that have open positions!" />
+    
+    <apex:stylesheet value="{! URLFOR($Resource.RoleplayStyles)}"/>
+    
+    <apex:repeat value="{! OpenCampaigns}" var="c">
+        <c:CampaignRegistrationComponent campaign="{!c}" />
+    </apex:repeat>
+    </div>
+</apex:page>

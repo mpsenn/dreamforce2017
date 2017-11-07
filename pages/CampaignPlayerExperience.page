@@ -1,0 +1,19 @@
+<apex:page standardController="Roleplay_Campaign__c" extensions="CampaignDetailExtension" readonly="true">
+        <apex:stylesheet value="{! URLFOR($Resource.RoleplayStyles)}"/>
+
+    <div class="my-border">
+    <apex:outputPanel styleClass="experience-panel" rendered="{! hasPlayerExperience}">
+        <h2>
+            Experience gained by each roleplayer
+        </h2>
+        <apex:chart height="200" width="200" data="{! PlayerExperience}">
+            <apex:pieSeries labelField="name" dataField="experience" donut="40">
+                <apex:chartLabel display="middle" />
+            </apex:pieSeries>
+        </apex:chart>
+    </apex:outputPanel>
+    <apex:outputPanel styleClass="experience-panel" rendered="{! !hasPlayerExperience}">
+        <div>No players for this campaign!</div>
+    </apex:outputPanel>
+    </div>
+</apex:page>
