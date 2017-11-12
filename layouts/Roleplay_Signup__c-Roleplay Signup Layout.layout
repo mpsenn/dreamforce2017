@@ -31,13 +31,15 @@
                 <behavior>Readonly</behavior>
                 <field>Class__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Level__c</field>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Strength__c</field>
+                <field>Level__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -45,13 +47,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Dexterity__c</field>
+                <field>Strength__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OwnerId</field>
+                <behavior>Readonly</behavior>
+                <field>Dexterity__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

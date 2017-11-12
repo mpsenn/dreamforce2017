@@ -4,10 +4,6 @@
     
     <div>
         <!-- Look at snippets.txt for Lightning Out markup -->
-    <div class="real-life-panel">
-        <apex:includeLightning />
-
-		<!-- to be filled in by Lightning Out -->
         <div class="real-life-panel">
         <apex:includeLightning />
 
@@ -26,21 +22,8 @@
                     'fillInCharacterDetails', function (cmp) { /* Empty */ });
             }
         </script>
-        </div>
+    </div>
 
-        <script>
-	        $Lightning.use('c:CharacterSheetDependencyApp', whenLightningOutLoaded);
-
-            function whenLightningOutLoaded() {
-                var attributes = { // standard attributes of force:recordView
-                    recordId: '{! roleplayer__c.id }', type: 'MINI'
-                };
-                
-                $Lightning.createComponent('force:recordView', attributes,
-                    'fillInCharacterDetails', function (cmp) { /* Empty */ });
-            }
-        </script>
-    </div>        
         <div class="avatar">
             <apex:image width="300px" value="{! URLFOR($Resource.avatars, roleplayer__c.avatar__c)}"/>
         </div>
