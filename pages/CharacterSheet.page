@@ -8,7 +8,25 @@
         <apex:includeLightning />
 
 		<!-- to be filled in by Lightning Out -->
+        <div class="real-life-panel">
+        <apex:includeLightning />
+
+		<!-- to be filled in by Lightning Out -->
         <div id="fillInCharacterDetails" />
+
+        <script>
+	        $Lightning.use('c:CharacterSheetDependencyApp', whenLightningOutLoaded);
+
+            function whenLightningOutLoaded() {
+                var attributes = { // standard attributes of force:recordView
+                    recordId: '{! roleplayer__c.id }', type: 'MINI'
+                };
+                
+                $Lightning.createComponent('force:recordView', attributes,
+                    'fillInCharacterDetails', function (cmp) { /* Empty */ });
+            }
+        </script>
+        </div>
 
         <script>
 	        $Lightning.use('c:CharacterSheetDependencyApp', whenLightningOutLoaded);
