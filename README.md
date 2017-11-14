@@ -10,3 +10,8 @@ This repo contains sample code and the slides from my session.
 * [CampaignDetails](pages/CampaignDetails.page) shows how lightningStylesheets="true" restyles \<apex:relatedList> components.
 * [CharacterSheetDependencyApp](aura/CharacterSheetDependencyApp/CharacterSheetDependencyApp.app) has the Lightning App used during the Lightning Out demo.
 * [CharacterSheet](pages/CharacterSheet.page) has the Visualforce-side of the Lightning Out demo.
+
+# Attribution
+
+Images used in this presentation were created by J Everett Nichol Licensed under a Creative Commons Attribution Share-alike 3.0 license and downloaded from opengameart.org
+https://opengameart.org/users/justin-nichol
